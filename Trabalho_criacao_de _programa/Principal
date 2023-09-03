@@ -1,0 +1,69 @@
+import Consultar_Ata as Consultar, Concluir_Ata as Concluir, Emitir_Ata as Emitir, Cadastrar
+import os
+
+resposta = 's'
+while resposta == 's':
+    os.system('cls') or None
+
+    Inter_Exter = input("Interno/Externo?")
+    cadastro = input("Já possui cadastro? (S/N)")
+    if cadastro == "S":
+        id = input("Qual seu id? ")
+    else:
+        if Inter_Exter == "Interno":
+            Cadastrar.Cadastrar_Interno()
+        else:
+            Cadastrar.Cadastrar_Externo()
+
+    
+    
+    funcao = '''Qual a sua função?
+    \r[1] Emissor
+    \r[2] Participante
+    \r[3] Funcionário
+    \r[4] Adiministrador
+    '''
+    menu_emissor = '''---------------- Menu emissor ------------------
+    \r[1] Emitir Ata
+    \r[2] Cuncluir Ata
+    '''
+    menu_participante = '''---------------- Menu participante ------------------
+    \r[1] Emitir sugestão
+    '''
+    menu_funcionario = '''---------------- Menu funcionario ------------------
+    \r[1] Consultar Ata
+    '''
+    menu_administrador = '''---------------- Menu administrador ------------------
+    \r[1] Emitir Relatórios
+    '''
+    print(funcao)
+
+    opcao = int(input('Entre com uma opção: '))
+
+    if opcao == 1:
+        print(menu_emissor)
+        resposta = int(input('Escolha a ação: '))
+        if(resposta == 1):
+            Emitir.Emitir_Ata()
+        else:
+            Concluir.Concluir_Ata()
+            
+    elif opcao == 2:
+        print(menu_participante)
+        resposta = int(input('Escolha a ação: '))
+        if(resposta == 1):
+            Emitir.Emitir_Sugestao()
+
+    elif opcao == 3:
+        print(menu_funcionario)
+        resposta = int(input('Escolha a ação: '))
+        if(resposta == 1):
+            Consultar.Consultar_Ata()
+
+    elif opcao == 4:
+        print(menu_administrador)
+        resposta = int(input('Escolha a ação: '))
+        if(resposta == 1):
+            Emitir.Emitir_Relatorio()
+    
+    resposta = input("\nDeseja continuar? [s/n] ")
